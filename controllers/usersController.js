@@ -66,8 +66,8 @@ export const updateUser = async (req, res, next) => {
     ).populate({
       path: "orders",
       populate: {
-        path: "records",
-        model: "records",
+        path: "products",
+        model: "products",
       },
     });
 
@@ -115,8 +115,8 @@ export const loginUser = async (req, res, next) => {
         ).populate({
           path: "orders",
           populate: {
-            path: "records",
-            model: "records",
+            path: "products",
+            model: "products",
           },
         });
 
@@ -142,8 +142,8 @@ export const checkUserToken = async (req, res, next) => {
     const user = await UsersCollection.findById(payload._id).populate({
       path: "orders",
       populate: {
-        path: "records",
-        model: "records",
+        path: "products",
+        model: "products",
       },
     });
     res.json({ success: true, data: user });

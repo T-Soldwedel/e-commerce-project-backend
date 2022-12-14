@@ -8,7 +8,7 @@ const userSchema = new Schema(
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    role: { type: String, enum: ["user", "manager"], default: "user" },
+    role: { type: String, /*enum: ["user", "manager"],*/ default: "user" },
     token: { type: String },
     profileImage: {
       type: String,
@@ -44,7 +44,7 @@ userSchema.pre("save", function (next) {
 });
 
 userSchema.post("save", function () {
-  console.log("I am Post_Save function");
+  console.log("I am Post Save function");
 });
 
 const UsersCollection = mongoose.model("users", userSchema);
